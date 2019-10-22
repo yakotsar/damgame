@@ -37,5 +37,9 @@ public class PlayerController : KinematicBody2D
         {
             MoveAndSlide(new Vector2(moveDir.x, 0.0f)*movementSpeed+new Vector2(0.0f, gravity), new Vector2(0.0f, -1.0f));
         }
+		if(Position.y > 1000)
+		{
+			GetTree().ReloadCurrentScene();
+		}
     }
 }
