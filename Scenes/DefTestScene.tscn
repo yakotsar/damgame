@@ -15,14 +15,12 @@ format = 1
 tile_data = PoolIntArray( 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 100, 0 )
+position = Vector2( 100, 50 )
 script = ExtResource( 2 )
-gravity = -400.0
-mass = 1.0
-movementSpeed = 50.0
-dashForce = 10.0
-kbInterp = 10.0
-gravityInterp = 15.0
+gravity = 400.0
+movementSpeed = 100.0
+dashSpeed = 1000.0
+dashTime = 0.15
 
 [node name="CollShape" type="CollisionShape2D" parent="Player"]
 shape = SubResource( 1 )

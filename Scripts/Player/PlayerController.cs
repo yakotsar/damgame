@@ -4,30 +4,38 @@ using System;
 public class PlayerController : KinematicBody2D
 {
     [Export] float gravity;
-    [Export] float mass;
+    // [Export] float mass;
     [Export] float movementSpeed;
-    [Export] float dashForce;
-    [Export] float kbInterp;
-    [Export] float gravityInterp;
-    float x;
-    float y;
+    // [Export] float kbInterp;
+    Vector2 dashDirection;
+    [Export] float dashSpeed;
+    [Export] float dashTime;
+    float dashTimer;
+
+    public override void _Process(float delta)
+    {
+        dashTimer -= delta;
+    }
 
     public override void _PhysicsProcess(float delta)
     {
-        Vector2 jumpDir = new Vector2(Input.GetActionStrength("left_c")-Input.GetActionStrength("right_c"), -Input.GetActionStrength("up_c")).Normalized();
-        Vector2 dir = new Vector2(Input.GetActionStrength("right")-Input.GetActionStrength("left"), Input.GetActionStrength("up"));
-        if(IsOnFloor() && jumpDir != Vector2.Zero)
+        Vector2 dashDir = new Vector2(Input.GetActionStrength("right_c")-Input.GetActionStrength("left_c"), -Input.GetActionStrength("up_c"));
+        Vector2 moveDir = new Vector2(Input.GetActionStrength("right")-Input.GetActionStrength("left"), -Input.GetActionStrength("up"));
+        if(dashTimer > 0.0f)
         {
-            x = Mathf.Lerp(x, dir.y*((jumpDir.x*dashForce)*(mass*gravity)), delta*gravityInterp);
-            y = Mathf.Lerp(y, dir.y*((jumpDir.y*dashForce)*(mass*gravity)), delta*gravityInterp);
-            MoveAndSlide(new Vector2(x, -y), new Vector2(0.0f, -1.0f));
-            GD.Print(jumpDir.y);
+            GD.Print(dashDirection);
+            MoveAndSlide(dashDirection*dashSpeed);
+            return;
+        }
+        if(IsOnFloor() && dashDir != Vector2.Zero && dashDir == moveDir)
+        {
+            dashTimer = dashTime;
+            dashDirection = dashDir;
+            MoveAndSlide(dashDir*dashSpeed, new Vector2(0.0f, -1.0f));
         }
         else
         {
-            x = Mathf.Lerp(x, (dir.x*movementSpeed)/mass, delta*kbInterp);
-            y = Mathf.Lerp(y, mass*gravity, delta*gravityInterp);
-            MoveAndSlide(new Vector2(x, -y), new Vector2(0.0f, -1.0f));
+            MoveAndSlide(new Vector2(moveDir.x, 0.0f)*movementSpeed+new Vector2(0.0f, gravity), new Vector2(0.0f, -1.0f));
         }
     }
 }
