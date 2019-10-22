@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sprites/TileSets/DefTileSet.tres" type="TileSet" id=1]
-[ext_resource path="res://Sprites/Tile.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Player/PlayerController.cs" type="Script" id=2]
+[ext_resource path="res://Sprites/Tile.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 30 )
@@ -15,9 +16,16 @@ tile_data = PoolIntArray( 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 100, 0 )
+script = ExtResource( 2 )
+gravity = -400.0
+mass = 1.0
+movementSpeed = 50.0
+dashForce = 10.0
+kbInterp = 10.0
+gravityInterp = 15.0
 
 [node name="CollShape" type="CollisionShape2D" parent="Player"]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
