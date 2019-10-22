@@ -1,0 +1,5 @@
+C:\Users\David\OneDrive\Documents\GitHub\damgame\.mono\temp\bin\Tools\Dam Game.dll
+C:\Users\David\OneDrive\Documents\GitHub\damgame\.mono\temp\bin\Tools\Dam Game.pdb
+C:\Users\David\OneDrive\Documents\GitHub\damgame\.mono\temp\obj\Tools\Dam Game.csprojAssemblyReference.cache
+C:\Users\David\OneDrive\Documents\GitHub\damgame\.mono\temp\obj\Tools\Dam Game.dll
+C:\Users\David\OneDrive\Documents\GitHub\damgame\.mono\temp\obj\Tools\Dam Game.pdb
