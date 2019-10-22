@@ -29,13 +29,14 @@ public class PlayerControllerA : KinematicBody2D
         movement.y = -mass*gravity;
         //interpolate jump axes
         y = Mathf.Lerp(y, moveDir.y*jumpSpeed, delta*jumpInterp);
+        //check for jump release
+        if(Input.IsActionJustReleased("ui_accept"))
+            canJump = false;
+            
         if(canJump && jumpTimer > 0 && moveDir.y < 0.0f)
         {
             //jump
             movement.y = y;
-            //check for jump release
-            if(Input.IsActionJustReleased("ui_accept"))
-                canJump = false;
         }
         else if(IsOnFloor())
         {
