@@ -19,8 +19,8 @@ public class PlayerController : KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
-        Vector2 dashDir = new Vector2(Input.GetActionStrength("right_c")-Input.GetActionStrength("left_c"), -Input.GetActionStrength("up_c"));
-        Vector2 moveDir = new Vector2(Input.GetActionStrength("right")-Input.GetActionStrength("left"), -Input.GetActionStrength("up"));
+        Vector2 dashDir = new Vector2(Input.GetActionStrength("right_c")-Input.GetActionStrength("left_c"), -Input.GetActionStrength("up_c")+Input.GetActionStrength("down_c"));
+        Vector2 moveDir = new Vector2(Input.GetActionStrength("right")-Input.GetActionStrength("left"), -Input.GetActionStrength("up")+Input.GetActionStrength("down"));
         if(dashTimer > 0.0f)
         {
             GD.Print(dashDirection);
