@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/TileSets/DefTileSet.tres" type="TileSet" id=1]
-[ext_resource path="res://Scripts/Player/PlayerController.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/Player/PlayerControllerA.cs" type="Script" id=2]
 [ext_resource path="res://Sprites/Tile.png" type="Texture" id=3]
 [ext_resource path="res://SuperMario.ogg" type="AudioStream" id=4]
 
@@ -18,10 +18,13 @@ tile_data = PoolIntArray( 0, 0, 0, 43, 0, 0, 65536, 0, 0, 65579, 0, 0, 131072, 0
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 100, 50 )
 script = ExtResource( 2 )
-gravity = 400.0
-movementSpeed = 100.0
-dashSpeed = 1000.0
-dashTime = 0.15
+gravity = -400.0
+mass = 1.0
+movementSpeed = 200.0
+movementInterp = 5.0
+jumpTime = 0.6
+jumpSpeed = 500.0
+jumpInterp = 7.5
 
 [node name="CollShape" type="CollisionShape2D" parent="Player"]
 shape = SubResource( 1 )
