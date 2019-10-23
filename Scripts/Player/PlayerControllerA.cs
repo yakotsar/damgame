@@ -27,8 +27,6 @@ public class PlayerControllerA : KinematicBody2D
         Vector2 moveDir = new Vector2(Input.GetActionStrength("right")-Input.GetActionStrength("left"), -Input.GetActionStrength("ui_accept"));
         Vector2 movement = new Vector2();
         movement.y = -mass*gravity;
-        //interpolate jump axes
-        y = Mathf.Lerp(y, moveDir.y*jumpSpeed, delta*jumpInterp);
         //check for jump release
         if(Input.IsActionJustReleased("ui_accept"))
             canJump = false;
@@ -36,6 +34,9 @@ public class PlayerControllerA : KinematicBody2D
         if(canJump && jumpTimer > 0 && moveDir.y < 0.0f)
         {
             //jump
+            //interpolate jump axes
+            y = Mathf.Lerp(y, moveDir.y*jumpSpeed, delta*jumpInterp);
+            //apply jump axes
             movement.y = y;
         }
         else if(IsOnFloor())
