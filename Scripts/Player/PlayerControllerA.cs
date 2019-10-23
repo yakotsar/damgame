@@ -26,6 +26,11 @@ public class PlayerControllerA : KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
+        MovementFunctionality(delta);
+    }
+
+    void MovementFunctionality(float delta)
+    {
         //get input direction
         Vector2 moveDir = new Vector2(Input.GetActionStrength("right")-Input.GetActionStrength("left"), -Input.GetActionStrength("ui_accept"));
         Vector2 movement = new Vector2();
