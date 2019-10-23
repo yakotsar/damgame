@@ -38,6 +38,12 @@ public class PlayerControllerA : KinematicBody2D
         if(canJump && jumpTimer > 0.0f && Mathf.Abs(moveDir.y) > 0.0f)
         {
             //jump
+            //ceiling detecion
+            if(IsOnCeiling())
+            {
+                canJump = false;
+                return;
+            }
             //interpolate jump axes
             y = Mathf.Lerp(y, moveDir.y*jumpSpeed, delta*jumpInterp);
             //apply jump axes
@@ -45,6 +51,9 @@ public class PlayerControllerA : KinematicBody2D
         }
         else if(IsOnFloor())
         {
+            //set y motion to 0
+            y = 0.0f;
+            movement.y = y;
             //reset jumpTimer
             jumpTimer = jumpTime;
             //allow jumping
@@ -55,10 +64,16 @@ public class PlayerControllerA : KinematicBody2D
             else
                 canJump = false;
         }
+        GD.Print(canJump);
         //interpolate movement axes
         x = Mathf.Lerp(x, moveDir.x*movementSpeed*(IsOnFloor()?1.0f:airControl), delta*movementInterp);
         movement.x = x;
         //move the player
         MoveAndSlide(movement, new Vector2(0.0f, -1.0f));
+        //reset scene
+        if(Position.y >= 650.0f)
+        {
+            GetTree().ReloadCurrentScene();
+        }
     }
 }
