@@ -4,6 +4,7 @@ using System;
 public class PlayerControllerA : KinematicBody2D
 {
     [Export] float gravity;
+    [Export] float gravityInterp;
     [Export] float mass;
     [Export] float movementSpeed;
     [Export] float movementInterp;
@@ -13,6 +14,7 @@ public class PlayerControllerA : KinematicBody2D
     [Export] float jumpSpeed;
     [Export] float jumpInterp;
     [Export(PropertyHint.Range, "-10, 10")] float airControl;
+    [Export] bool continuousJumping;
     float x;
     float y;
 
@@ -27,12 +29,13 @@ public class PlayerControllerA : KinematicBody2D
         //get input direction
         Vector2 moveDir = new Vector2(Input.GetActionStrength("right")-Input.GetActionStrength("left"), -Input.GetActionStrength("ui_accept"));
         Vector2 movement = new Vector2();
-        movement.y = -mass*gravity;
+        y = Mathf.Lerp(y, -mass*gravity, delta*gravityInterp);
+        movement.y = y;
         //check for jump release
         if(Input.IsActionJustReleased("ui_accept"))
             canJump = false;
             
-        if(canJump && jumpTimer > 0 && moveDir.y < 0.0f)
+        if(canJump && jumpTimer > 0.0f && Mathf.Abs(moveDir.y) > 0.0f)
         {
             //jump
             //interpolate jump axes
@@ -45,8 +48,12 @@ public class PlayerControllerA : KinematicBody2D
             //reset jumpTimer
             jumpTimer = jumpTime;
             //allow jumping
-            if(!canJump)
+            if(continuousJumping)
                 canJump = true;
+            else if(moveDir.y == 0.0f)
+                canJump = true;
+            else
+                canJump = false;
         }
         //interpolate movement axes
         x = Mathf.Lerp(x, moveDir.x*movementSpeed*(IsOnFloor()?1.0f:airControl), delta*movementInterp);
