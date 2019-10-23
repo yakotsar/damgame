@@ -12,6 +12,7 @@ public class PlayerControllerA : KinematicBody2D
     bool canJump;
     [Export] float jumpSpeed;
     [Export] float jumpInterp;
+    [Export(PropertyHint.Range, "-10, 10")] float airControl;
     float x;
     float y;
 
@@ -48,7 +49,7 @@ public class PlayerControllerA : KinematicBody2D
                 canJump = true;
         }
         //interpolate movement axes
-        x = Mathf.Lerp(x, moveDir.x*movementSpeed, delta*movementInterp);
+        x = Mathf.Lerp(x, moveDir.x*movementSpeed*(IsOnFloor()?1.0f:airControl), delta*movementInterp);
         movement.x = x;
         //move the player
         MoveAndSlide(movement, new Vector2(0.0f, -1.0f));
