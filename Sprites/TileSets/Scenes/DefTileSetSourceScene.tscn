@@ -1,18 +1,152 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Sprites/Tile.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Tiles/TileSprite.png" type="Texture" id=1]
 [ext_resource path="res://P_Materials/DefTilePMat.tres" type="PhysicsMaterial" id=2]
+[ext_resource path="res://Sprites/Tiles/TileSprite01.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Tiles/TileSprite02.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Tiles/TileSprite03.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Tiles/TileSprite04.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Tiles/TileSprite05.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Tiles/TileSprite06.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Tiles/TileSprite07.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Tiles/TileSprite08.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Tiles/TileSprite09.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Tiles/TileSprite10.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Tiles/TileSprite11.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30, 30 )
+extents = Vector2( 31.5047, 31.5011 )
 
 [node name="Node" type="Node"]
 
 [node name="Tile" type="Sprite" parent="."]
+editor/display_folded = true
 texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Tile"]
 physics_material_override = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tile/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tile2" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile2"]
+physics_material_override = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile2/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tile3" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile3"]
+physics_material_override = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile3/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tile4" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile4"]
+physics_material_override = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile4/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tile5" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile5"]
+physics_material_override = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile5/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tile6" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile6"]
+physics_material_override = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile6/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tile7" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile7"]
+physics_material_override = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile7/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tile8" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile8"]
+physics_material_override = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile8/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tile9" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile9"]
+physics_material_override = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile9/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tile10" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile10"]
+physics_material_override = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile10/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tile11" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile11"]
+physics_material_override = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile11/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tile12" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile12"]
+physics_material_override = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile12/StaticBody2D"]
 shape = SubResource( 1 )
