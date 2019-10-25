@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sprites/TileSets/DefBackgroundTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Sprites/TileSets/DefTileSet.tres" type="TileSet" id=2]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 30 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 29.29, 32.14 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -19,23 +22,33 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 63, 63 )
 format = 1
-tile_data = PoolIntArray( 262157, 0, 0, 393220, 9, 0, 393221, 5, 0, 393222, 5, 0, 393223, 13, 0, 393224, 5, 0, 393225, 5, 0, 393226, 5, 0, 393227, 10, 0, 458754, 1, 0, 458755, 5, 0, 458756, 11, 0, 458759, 6, 0, 458763, 8, 0, 458764, 5, 0, 458765, 3, 0, 524295, 6, 0, 589831, 6, 0 )
+tile_data = PoolIntArray( 196614, 0, 0, 196620, 0, 0, 262156, 0, 0, 327684, 0, 0, 327689, 1, 0, 327690, 5, 0, 327691, 5, 0, 327692, 5, 0, 327693, 3, 0, 393220, 0, 0, 458756, 1, 0, 458757, 5, 0, 458758, 5, 0, 458759, 5, 0, 458760, 3, 0 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 500, 50 )
 script = ExtResource( 3 )
 gravity = -9.807
 gravityInterp = 11.0
-mass = 60.0
+mass = 120.0
 movementSpeed = 250.0
-movementInterp = 2.5
+movementInterp = 10.0
 jumpTime = 0.09
 jumpSpeed = 4000.0
 jumpInterp = 13.5
-airControl = 1.2
+airControl = 1.5
 
 [node name="Sprite" type="Sprite" parent="Player"]
 texture = ExtResource( 4 )
 
 [node name="CollShape" type="CollisionShape2D" parent="Player"]
 shape = SubResource( 1 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( 320.71, 72.14 )
+gravity_scale = 9.8
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource( 2 )

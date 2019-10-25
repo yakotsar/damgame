@@ -74,7 +74,7 @@ public class PlayerControllerA : KinematicBody2D
         x = Mathf.Lerp(x, moveDir.x*movementSpeed*(IsOnFloor()?1.0f:airControl), delta*movementInterp);
         movement.x = x;
         //move the player
-        MoveAndSlide(movement, new Vector2(0.0f, -1.0f));
+        MoveAndSlide(Vector2.Zero, new Vector2(0.0f, -1.0f));
         //reset scene
         if(Position.y >= 650.0f)
         {
